@@ -2,7 +2,7 @@
 // Use x&(x-1) which gives x with lowest bit erased
 // e.g. x = 10010010, x-1 = 10010001
 // 10010010 & 10010001 == 10010000
-class solution 
+class getParitySolution
 {
   public static void main(String args[])
   {
