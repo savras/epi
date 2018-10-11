@@ -1,6 +1,6 @@
 // >> is arithmatic shift. This preserves signedness of number
 // >>> is logical shift. This fills everything on the msb with 0s
-class swapBitsSolution
+class SwapBitsSolution
 {
   public static void main(String args[]) 
   {

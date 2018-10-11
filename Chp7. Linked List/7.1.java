@@ -1,4 +1,4 @@
-class mergeTwoSortedLinkedList {
+class MergeTwoSortedLinkedList {
 
     public static void main(String[] args) 
     {
