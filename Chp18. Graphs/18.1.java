@@ -3,11 +3,23 @@ class SearchMaze {
 
     public static void main(String[] args) {
       int[][] maze = new int[10][10];
-      // 1 == no path.
+
+      //col    0 1 2 3 4 5 6 7 8 9
+      //r0     1 0 0 0 0 0 1 1 0 2
+      //r1     0 0 1 0 0 0 0 0 0 0
+      //r2     1 0 1 0 0 1 1 0 1 1
+      //r3     0 0 0 1 1 1 0 0 1 0
+      //r4     0 1 1 0 0 0 0 0 0 0
+      //r5     0 1 1 1 0 1 0 1 1 0
+      //r6     0 0 0 0 0 0 0 0 0 0
+      //r7     1 0 1 0 1 0 1 0 0 0
+      //r8     1 0 1 1 0 0 0 1 1 1
+      //r9     0 0 0 0 0 0 0 0 1 1
+      // 1 == blocked path.
       maze[0][0] = 1;   
       maze[0][6] = 1;
       maze[0][7] = 1;
-      maze[0][9] = 1;   // Destination
+      maze[0][9] = 2;   // Destination
       maze[1][2] = 1;
       maze[2][0] = 1;
       maze[2][2] = 1;
@@ -23,11 +35,10 @@ class SearchMaze {
       maze[4][2] = 1;
       maze[5][1] = 1;
       maze[5][2] = 1;
-      maze[5][2] = 1;
+      maze[5][3] = 1;
       maze[5][5] = 1;
       maze[5][7] = 1;
       maze[5][8] = 1;
-      maze[6][4] = 1;
       maze[7][0] = 1;
       maze[7][2] = 1;
       maze[7][4] = 1;
