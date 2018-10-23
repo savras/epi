@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class SearchMaze {
@@ -15,9 +16,7 @@ class SearchMaze {
     }
 
     static enum Color { WHITE, BLACK }
-
     final static int[][] DIRECTIONS = {{0,1},{1,0},{-1,0},{0,-1}};
-    static List<Coordinate> path = new ArrayList<Coordinate>();
 
     public static void main(String[] args) {
       int[][] maze = new int[10][10];
@@ -69,26 +68,33 @@ class SearchMaze {
       maze[9][8] = 1;
       maze[9][9] = 1;
 
-      var hasPath = searchMaze(maze, path);
-      System.out.println(hasPath);
+      List<Coordinate> paths = searchMaze(maze);
+      for(Coordinate p: paths) {
+        System.out.println(p.row + " " + p.col);
+      }       
     }
 
-    public static boolean searchMaze(int[][] maze, List<Coordinate> path){
-      var start = new Coordinate(9, 0);
-      var end = new Coordinate(0, 9);
-      return navigate(maze, start, end);
+    public static List<Coordinate> searchMaze(int[][] maze){
+      Coordinate start = new Coordinate(9, 0);
+      Coordinate end = new Coordinate(0, 9);
+      List<Coordinate> path = new ArrayList<Coordinate>();
+      if(hasPath(maze, start, end, path)) {
+        return path;
+      }
+      return Collections.EMPTY_LIST;
     }
 
-    public static boolean navigate(int[][] maze, Coordinate cur, Coordinate dest) {
+    public static boolean hasPath(int[][] maze, Coordinate cur, Coordinate dest, List<Coordinate> path) {
       if(!isCoordinateWithinBoundsAndNotVisited(maze, cur)) { return false; }
       if(cur.row == dest.row && cur.col == dest.col) { return true; }
       
       for(int[] d : DIRECTIONS) {
         maze[cur.row][cur.col] = Color.BLACK.ordinal();
-
-        if(navigate(maze, new Coordinate(cur.row + d[0], cur.col + d[1]), dest)){
+        path.add(cur);
+        if(hasPath(maze, new Coordinate(cur.row + d[0], cur.col + d[1]), dest, path)){
           return true;
         }
+        path.remove(path.size() - 1);
       }
       return false;
     }
