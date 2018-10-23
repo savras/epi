@@ -86,10 +86,7 @@ class SearchMaze {
       for(int[] d : DIRECTIONS) {
         maze[cur.row][cur.col] = Color.BLACK.ordinal();
 
-        if(!navigate(maze, new Coordinate(cur.row + d[0], cur.col + d[1]), dest)){
-          maze[cur.row][cur.col] = Color.WHITE.ordinal();
-        }
-        else {
+        if(navigate(maze, new Coordinate(cur.row + d[0], cur.col + d[1]), dest)){
           return true;
         }
       }
